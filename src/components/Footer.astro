@@ -1,27 +1,35 @@
 ---
 import { contact, socials, site } from "../data/site.js";
+import { references } from "../data/references.js";
+import Icon from "./Icon.astro";
 const year = new Date().getFullYear();
+const icon: Record<string, string> = { GitHub: "github", LinkedIn: "linkedin", "Almanac (blog)": "pen" };
+const ref = references.available[0];
 ---
-<footer class="site-footer wrap" aria-labelledby="contact-h">
-  <h2 class="contact-line" id="contact-h">{contact.headline}</h2>
-  <div class="contact-grid">
-    <div class="contact-main">
-      <p class="label">Email</p>
-      <div class="email-row" data-email-b64={contact.emailB64}>
-        <span class="email" id="email">{contact.display}</span>
-        <button class="copy-btn" type="button">Copy email</button>
-        <a class="mail-link" href="#contact-h">Write an email</a>
-      </div>
-      <p class="muted small">{contact.note}</p>
+<div class="wrap">
+  <section class="contact panel" id="contact" aria-labelledby="contact-h">
+    <div>
+      <h2 id="contact-h">{contact.headline}</h2>
+      <p class="muted small" style="margin-top: 0.4rem">{contact.note}</p>
     </div>
-    <ul class="socials" aria-label="Elsewhere">
-      {socials.map((s) => (
-        <li><a href={s.url} rel="noopener"><span>{s.label}</span><span>{s.handle}</span></a></li>
-      ))}
-    </ul>
-  </div>
-  <div class="colophon">
-    <span>&copy; {year} {site.fullName}</span>
-    <span>Hand-built with Astro. No trackers.</span>
-  </div>
-</footer>
+    <div class="contact-row" data-email-b64={contact.emailB64}>
+      <span class="email" id="email">{contact.display}</span>
+      <div class="btn-row">
+        <a class="btn btn-primary mail-link" href="#contact-h"><Icon name="mail" /> Write an email</a>
+        <button class="btn copy-btn" type="button">Copy email</button>
+      </div>
+    </div>
+    <div class="contact-row">
+      <ul class="link-chips" aria-label="Elsewhere">
+        {socials.filter((s) => icon[s.label]).map((s) => (
+          <li><a href={s.url} rel="noopener"><Icon name={icon[s.label]} size={14} /> {s.label.replace(" (blog)", "")}</a></li>
+        ))}
+      </ul>
+      {ref && <p class="muted small">References: {ref.relationship.toLowerCase()} at {ref.context.split(",")[0]}, on request.</p>}
+    </div>
+  </section>
+  <footer class="site-footer">
+    <span>&copy; {year} {site.fullName}. Perak, Malaysia.</span>
+    <a href="#">Back to top &uarr;</a>
+  </footer>
+</div>

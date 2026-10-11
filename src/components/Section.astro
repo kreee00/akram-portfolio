@@ -1,6 +1,7 @@
 ---
-/* The standard section: a label rail on the left, content on the right.
-   <Section label="Skills" note="Optional line under the label"> ... </Section> */
+/* A home-page section: a mono "// LABEL" heading, then content.
+   <Section label="Skills & toolbox" id="skills" note="Optional line"> ... </Section>
+   Put a link on the right of the heading with <a slot="action" ...>. */
 import { slugify } from "../lib/format.js";
 
 interface Props {
@@ -12,11 +13,10 @@ const { label, note, id } = Astro.props;
 const headingId = (id || slugify(label)) + "-h";
 ---
 <section class="section" id={id} aria-labelledby={headingId}>
-  <header>
+  <div class="section-head">
     <h2 id={headingId}>{label}</h2>
-    {note && <p class="muted small">{note}</p>}
-  </header>
-  <div class="section-body">
-    <slot />
+    <slot name="action" />
+    {note && <p class="note">{note}</p>}
   </div>
+  <slot />
 </section>

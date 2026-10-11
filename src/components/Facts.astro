@@ -1,7 +1,0 @@
----
-interface Props { items?: [string, string][] }
-const { items = [] } = Astro.props;
----
-<dl class="facts">
-  {items.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
-</dl>

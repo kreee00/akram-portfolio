@@ -1,20 +1,33 @@
 ---
-import { nav } from "../data/site.js";
+/* Floating header. Section links scroll the home page; Kutub Khanah is its own page.
+   Links are "./#id" so they also work from the library and résumé pages. */
+import { nav, socials } from "../data/site.js";
+import Icon from "./Icon.astro";
 
-/* "/experience.html", "/experience" and "experience.html" all match. */
-const norm = (p: string) => p.replace(/^\.?\/+/, "").replace(/(index)?(\.html)?\/?$/, "");
-const here = norm(Astro.url.pathname);
+const github = socials.find((s) => s.label === "GitHub");
+const linkedin = socials.find((s) => s.label === "LinkedIn");
+const here = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "");
 ---
 <header class="site-header">
-  <div class="wrap">
-    <a class="wordmark" href="./">Akram <em>Faisal</em></a>
-    <nav class="nav" aria-label="Main">
-      <ul>
-        {nav.map((item) => (
-          <li><a href={item.href} aria-current={norm(item.href) === here ? "page" : undefined}>{item.label}</a></li>
-        ))}
-      </ul>
-      <button class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
-    </nav>
+  <div class="bar">
+    <a class="wordmark" href="./">akramfaisal.org</a>
+    <ul class="nav" id="site-nav" aria-label="Sections">
+      {nav.map((item) => {
+        const page = !item.href.includes("#");
+        const current = page && here.endsWith(item.href.replace(/\.html$/, ""));
+        return <li><a href={item.href} class:list={{ "page-link": page }} aria-current={current ? "page" : undefined} data-spy={page ? undefined : item.href.split("#")[1]}>{item.label}</a></li>;
+      })}
+    </ul>
+    <div class="header-tools">
+      {github && <a class="icon-btn social" href={github.url} rel="noopener" aria-label="GitHub"><Icon name="github" /></a>}
+      {linkedin && <a class="icon-btn social" href={linkedin.url} rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>}
+      <a class="icon-btn" href="resume.html" aria-label="Résumé"><Icon name="doc" /></a>
+      <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+        <span class="sun"><Icon name="sun" /></span><span class="moon"><Icon name="moon" /></span>
+      </button>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <Icon name="menu" size={18} />
+      </button>
+    </div>
   </div>
 </header>
