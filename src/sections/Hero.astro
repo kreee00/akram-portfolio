@@ -1,29 +1,49 @@
 ---
-/* Home page hero with portrait.
-   Photo: drop it in src/assets/headshot.jpg (portrait, about 800 x 1000 px).
-   Until it exists, an "AF" monogram is shown. */
+/* Home page hero. Photo: src/assets/headshot.jpg (the bigger the source, the sharper).
+   The "Reading now" card shows the first book marked status: "reading" in src/data/books.js. */
 import { Image } from "astro:assets";
+import { socials } from "../data/site.js";
+import { books } from "../data/books.js";
+import Icon from "../components/Icon.astro";
+import BookCover from "../components/BookCover.astro";
 
 const found = import.meta.glob("../assets/headshot.{jpg,jpeg,png,webp}", { eager: true, import: "default" });
 const photo: any = Object.values(found)[0];
+const reading = books.find((b) => b.status === "reading");
+const link = (label: string) => socials.find((s) => s.label.startsWith(label))?.url;
 ---
-<section class="hero" aria-labelledby="hero-name">
-  <div class="hero-top">
-    <div class="hero-title">
-      <p class="label">Cybersecurity &middot; DevOps &middot; Governance, risk &amp; compliance</p>
-      <h1 class="hero-name" id="hero-name"><span>Akram</span><span class="it">Faisal</span></h1>
+<section class="hero" id="top" aria-labelledby="hero-name">
+  <div class="hero-copy">
+    <p class="status">Open to graduate roles from January 2027</p>
+    <h1 class="hero-name" id="hero-name">Akram Faisal</h1>
+    <p class="hero-sub">
+      <strong>Cybersecurity &amp; DevOps Engineer</strong>
+      <span class="pill"><Icon name="pin" size={13} /> Perak, Malaysia</span>
+    </p>
+    <p class="hero-bio">Final-year Computer Science student at <strong>Universiti Teknologi PETRONAS</strong>. I harden Linux servers, plan self-hosted infrastructure and work where security meets policy.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#contact"><Icon name="mail" /> Get in touch</a>
+      <a class="btn" href="resume.html"><Icon name="doc" /> Résumé</a>
+      <a class="btn btn-plain" href="#projects">View projects <Icon name="arrow" size={14} /></a>
     </div>
-    <figure class:list={["portrait", { "no-photo": !photo }]}>
-      {photo && <Image src={photo} alt="Portrait of Akram Faisal" width={560} widths={[320, 560]} sizes="(max-width: 640px) 15rem, 17rem" loading="eager" />}
-      <span class="portrait-fallback" aria-hidden="true">AF</span>
-      <figcaption class="label">Padang Rengas, Perak</figcaption>
-    </figure>
+    <ul class="link-chips" aria-label="Links">
+      <li><a href={link("GitHub")} rel="noopener"><Icon name="github" size={14} /> GitHub</a></li>
+      <li><a href={link("LinkedIn")} rel="noopener"><Icon name="linkedin" size={14} /> LinkedIn</a></li>
+      <li><a href="#contact"><Icon name="mail" size={14} /> Email</a></li>
+      <li><a href={link("Almanac")} rel="noopener"><Icon name="pen" size={14} /> Blog</a></li>
+    </ul>
+    {reading && (
+      <a class="now panel" href="library.html">
+        <span class="now-cover"><BookCover book={reading} /></span>
+        <span class="now-text">
+          <span class="now-label">Reading now</span>
+          <span class="now-title">{reading.title} <span>by {reading.author}</span></span>
+        </span>
+      </a>
+    )}
   </div>
-  <div class="hero-foot">
-    <p class="lede">Final-year computer science student and part-time DevOps engineer, working toward security roles where technology meets policy.</p>
-    <div class="hero-meta">
-      <p class="status label">Open to graduate roles from Jan 2027</p>
-      <p class="label">4.78&deg;N 100.86&deg;E</p>
-    </div>
-  </div>
+  <figure class:list={["portrait", { "no-photo": !photo }]}>
+    {photo && <Image src={photo} alt="Portrait of Akram Faisal" width={1280} widths={[640, 960, 1280]} sizes="(max-width: 760px) 16rem, 20rem" quality={92} loading="eager" fetchpriority="high" />}
+    <span class="portrait-fallback" aria-hidden="true">AF</span>
+  </figure>
 </section>
