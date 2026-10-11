@@ -8,8 +8,8 @@ const results = [
 ];
 const suffix = (n: number) => (n % 100 >= 11 && n % 100 <= 13) ? "th" : ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] || "th";
 ---
-<Section label="CTF results" note="Blue team: OSINT and memory forensics.">
+<Section label="CTF results" id="ctf" note="Blue team: OSINT and memory forensics.">
   <ul class="results">
-    {results.map((r) => <li><span class="rank">{r.place}<sup>{suffix(r.place)}</sup></span><span>{r.event}</span></li>)}
+    {results.map((r) => <li class="panel"><span class="rank">{r.place}<sup>{suffix(r.place)}</sup></span><span>{r.event}</span></li>)}
   </ul>
 </Section>

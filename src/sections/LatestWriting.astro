@@ -8,7 +8,9 @@ interface Props { limit?: number }
 const { limit = 3 } = Astro.props;
 const items = (await getArticles()).slice(0, limit);
 ---
-<Section label="Latest writing" note={`From my blog, ${blog.name}.`}>
-  <ArticleList items={items} />
-  <a class="more" href={blog.archive} rel="noopener">All posts on {blog.name} &rarr;</a>
+<Section label="Latest writing" id="writing">
+  <a slot="action" class="head-link" href={blog.archive} rel="noopener">All posts on {blog.name} &rarr;</a>
+  <div class="panel">
+    <ArticleList items={items} />
+  </div>
 </Section>

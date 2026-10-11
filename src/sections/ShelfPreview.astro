@@ -1,23 +1,23 @@
 ---
-/* Home page: a few books from the shelf. */
+/* Home page: a single card pointing to the full library page. */
 import Section from "../components/Section.astro";
-import Book from "../components/Book.astro";
+import BookCover from "../components/BookCover.astro";
 import { books } from "../data/books.js";
 
-interface Props { limit?: number }
-const { limit = 4 } = Astro.props;
-const reading = books.filter((b) => b.status === "reading");
-const read = books.filter((b) => b.status === "read");
-const show = reading.concat(read).slice(0, limit);
+const reading = books.find((b) => b.status === "reading");
+const read = books.filter((b) => b.status === "read").length;
+const next = books.filter((b) => b.status === "to-read").length;
 ---
-<Section label="Kutub Khanah" note="My bookshelf. Reviews live on the blog.">
-  {books.length === 0 ? (
-    <p class="muted">The shelf is being catalogued. Check back soon.</p>
-  ) : (
-    <>
-      <p class="shelf-count"><span class="rank">{read.length}</span><span class="label">books read &middot; {reading.length} on the nightstand</span></p>
-      <ul class="books">{show.map((b) => <Book book={b} />)}</ul>
-    </>
-  )}
-  <a class="more" href="library.html">The whole shelf &rarr;</a>
+<Section label="Kutub Khanah" id="library">
+  <a slot="action" class="head-link" href="library.html">Full library ({books.length}) &rarr;</a>
+  <div class="shelf-card panel">
+    {reading ? <BookCover book={reading} /> : <span></span>}
+    <div class="shelf-text">
+      <p class="label">Reading now</p>
+      {reading ? <h3>{reading.title}</h3> : <h3>Nothing on the nightstand</h3>}
+      {reading && <p class="muted">{reading.author}</p>}
+      <p class="shelf-stats">{read} read · {next} up next · reviews on the blog</p>
+      <a class="btn" href="library.html">Open the library</a>
+    </div>
+  </div>
 </Section>

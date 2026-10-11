@@ -1,7 +1,7 @@
 ---
 import Section from "../components/Section.astro";
 
-/* Add a group by copying a block. learning: [...] shows in grey with "(learning)". */
+/* Add a group by copying a block. learning: [...] shows as a dashed tag. */
 const groups = [
   {
     title: "Security operations",
@@ -26,15 +26,17 @@ const groups = [
   },
 ];
 ---
-<Section label="Skills">
-  <div class="skills">
+<Section label="Skills & toolbox" id="skills">
+  <div class="skill-grid">
     {groups.map((g) => (
-      <div class="skill-group">
-        <h3>{g.title}</h3>
-        <p>{g.blurb}</p>
-        <ul class="tools">
-          {g.tools.map((t) => <li>{t}</li>)}
-          {(g.learning || []).map((t) => <li class="learning">{t} (learning)</li>)}
+      <div class="skill-card panel">
+        <div>
+          <h3>{g.title}</h3>
+          <p>{g.blurb}</p>
+        </div>
+        <ul class="tags">
+          {g.tools.map((t) => <li class="tag">{t}</li>)}
+          {(g.learning || []).map((t) => <li class="tag learning" title="Learning">{t} (learning)</li>)}
         </ul>
       </div>
     ))}

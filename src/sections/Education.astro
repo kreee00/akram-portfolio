@@ -1,12 +1,28 @@
 ---
+/* Degree on the left, certifications on the right. */
 import Section from "../components/Section.astro";
+import Icon from "../components/Icon.astro";
+import OrgLogo from "../components/OrgLogo.astro";
+
+const certs = [
+  { name: "CompTIA Security+", note: "Exam by Dec 2026, through the Yayasan Peneraju programme" },
+  { name: "AWS Academy Cloud Foundations", note: "In progress, preparing for AWS Certified Cloud Practitioner" },
+  { name: "Memory Dump Analysis with Volatility3", note: "Instructor, CYBERHAX UTP, Mar 2025" },
+];
 ---
-<Section label="Education">
-  <ul class="facts-list">
-    <li>
-      <span class="what">Bachelor of Computer Science (Hons)</span>
-      <span class="label">Expected Dec 2026</span>
-      <span class="note">Universiti Teknologi PETRONAS &middot; Cybersecurity major, corporate management minor &middot; CGPA 3.65 &middot; Dean's List, January 2024 and September 2024</span>
-    </li>
-  </ul>
+<Section label="Education" id="education">
+  <div class="duo">
+    <article class="card panel">
+      <p class="card-when"><Icon name="cap" size={14} /> Expected Dec 2026</p>
+      <div class="lead-org"><OrgLogo name="Universiti Teknologi PETRONAS" /><h3>Universiti Teknologi PETRONAS</h3></div>
+      <p class="card-sub">Bachelor of Computer Science (Hons)</p>
+      <p class="muted">Cybersecurity major, corporate management minor. CGPA 3.65. Dean's List, January 2024 and September 2024.</p>
+    </article>
+    <article class="card panel">
+      <p class="card-when"><Icon name="doc" size={14} /> Certifications</p>
+      <ul class="cert-list">
+        {certs.map((c) => <li><strong>{c.name}</strong><span>{c.note}</span></li>)}
+      </ul>
+    </article>
+  </div>
 </Section>
