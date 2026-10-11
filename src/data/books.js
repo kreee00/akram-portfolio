@@ -1,5 +1,5 @@
 /*
-  KHUTUB KHANAH (BOOKSHELF)
+  Kutub Khanah (BOOKSHELF)
 
   status   -> "reading", "read" or "to-read"
   year     -> year you finished it ("" if still reading)

@@ -15,7 +15,7 @@ export const nav = [
   { label: "Home", href: "./" },
   { label: "Experience", href: "experience.html" },
   { label: "Projects", href: "projects.html" },
-  { label: "Khutub Khanah", href: "library.html" },
+  { label: "Kutub Khanah", href: "library.html" },
   { label: "Résumé", href: "resume.html" },
 ];
 

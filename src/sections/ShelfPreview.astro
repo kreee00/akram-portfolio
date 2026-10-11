@@ -10,7 +10,7 @@ const reading = books.filter((b) => b.status === "reading");
 const read = books.filter((b) => b.status === "read");
 const show = reading.concat(read).slice(0, limit);
 ---
-<Section label="Khutub Khanah" note="My bookshelf. Reviews live on the blog.">
+<Section label="Kutub Khanah" note="My bookshelf. Reviews live on the blog.">
   {books.length === 0 ? (
     <p class="muted">The shelf is being catalogued. Check back soon.</p>
   ) : (
