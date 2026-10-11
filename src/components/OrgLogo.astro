@@ -1,0 +1,13 @@
+---
+/* An organisation's logo, or its initials until a logo exists.
+   <OrgLogo name="Universiti Teknologi PETRONAS" />  (names come from src/data/orgs.js) */
+import { Image } from "astro:assets";
+import { findLogo } from "../lib/logos.js";
+
+interface Props { name: string; size?: "sm" | "md" }
+const { name, size = "md" } = Astro.props;
+const { img, short } = findLogo(name);
+---
+<span class:list={["org-logo", size, { "has-img": img }]} aria-hidden="true">
+  {img ? <Image src={img} alt="" width={96} widths={[48, 96]} sizes={size === "sm" ? "1.25rem" : "2.25rem"} /> : short}
+</span>
