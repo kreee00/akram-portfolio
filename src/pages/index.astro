@@ -1,26 +1,31 @@
 ---
-/* HOME PAGE
+/* HOME PAGE: the whole portfolio on one page.
    Each line below is one section, from top to bottom.
    - Remove a section: delete (or comment out) its line.
-   - Reorder: move the lines.
-   - Add one: create src/sections/MySection.astro, import it, add <MySection />. */
+   - Reorder: move the lines (and the matching link in src/data/site.js).
+   - Add one: create src/sections/MySection.astro, import it, add <MySection />.
+   Only Kutub Khanah (library.html) and the printable résumé live on their own pages. */
 import Base from "../layouts/Base.astro";
 import Hero from "../sections/Hero.astro";
 import About from "../sections/About.astro";
-import WorkSummary from "../sections/WorkSummary.astro";
-import LeadershipHighlights from "../sections/LeadershipHighlights.astro";
+import Education from "../sections/Education.astro";
+import Experience from "../sections/Experience.astro";
 import Skills from "../sections/Skills.astro";
-import ProjectsFeatured from "../sections/ProjectsFeatured.astro";
+import Projects from "../sections/Projects.astro";
+import Leadership from "../sections/Leadership.astro";
+import CtfResults from "../sections/CtfResults.astro";
 import LatestWriting from "../sections/LatestWriting.astro";
 import ShelfPreview from "../sections/ShelfPreview.astro";
 ---
 <Base>
   <Hero />
   <About />
-  <WorkSummary />
-  <LeadershipHighlights />
+  <Education />
+  <Experience />
   <Skills />
-  <ProjectsFeatured />
+  <Projects />
+  <Leadership />
+  <CtfResults />
   <LatestWriting limit={3} />
-  <ShelfPreview limit={4} />
+  <ShelfPreview />
 </Base>

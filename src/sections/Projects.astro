@@ -1,0 +1,57 @@
+---
+/* Every project in src/data/projects.js, featured ones first. Click a row to expand it.
+   Thumbnail: src/assets/photos/<project id>.jpg (initials are shown until it exists). */
+import { Image } from "astro:assets";
+import Section from "../components/Section.astro";
+import Icon from "../components/Icon.astro";
+import { projects } from "../data/projects.js";
+
+const list = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)];
+const photos = import.meta.glob("../assets/photos/*.{jpg,jpeg,png,webp}", { eager: true, import: "default" });
+const thumb = (id: string): any => {
+  const key = Object.keys(photos).find((k) => k.replace(/^.*\//, "").replace(/\.\w+$/, "") === id);
+  return key ? photos[key] : null;
+};
+const initials = (t: string) => t.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+const tagsOf = (p: any) => {
+  const stack = p.facts.find(([k]: [string]) => k === "Stack" || k === "Tool");
+  return stack ? stack[1].split(/,\s*/) : [];
+};
+---
+<Section label="Projects" id="projects">
+  <ol class="rows">
+    {list.map((p, i) => {
+      const img = thumb(p.id);
+      const tags = tagsOf(p);
+      return (
+        <li id={p.id}>
+          <details class="row panel">
+            <summary>
+              <span class="row-num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="row-thumb" aria-hidden="true">
+                {img ? <Image src={img} alt="" width={240} widths={[160, 240]} sizes="5rem" /> : initials(p.title)}
+              </span>
+              <span class="row-title"><h3>{p.title}</h3><p>{p.summary}</p></span>
+              <span class="row-meta">
+                {tags.slice(0, 2).map((t: string) => <span class="tag">{t}</span>)}
+                {tags.length > 2 && <span class="tag">+{tags.length - 2}</span>}
+              </span>
+              <span class="chev" aria-hidden="true"><Icon name="chevron" size={14} /></span>
+            </summary>
+            <div class="row-body">
+              <p class="label">{p.kind}</p>
+              <p class="muted">{p.summary}</p>
+              {(p.details.length > 0 || p.facts.length > 0) && (
+                <dl class="detail-list">
+                  {p.details.map(([k, v]: [string, string]) => <><dt>{k}</dt><dd>{v}</dd></>)}
+                  {p.facts.map(([k, v]: [string, string]) => <><dt>{k}</dt><dd>{v}</dd></>)}
+                </dl>
+              )}
+              {p.link && <a class="btn" href={p.link} rel="noopener" style="justify-self: start"><Icon name="external" size={14} /> Visit {p.link.replace(/^https?:\/\//, "")}</a>}
+            </div>
+          </details>
+        </li>
+      );
+    })}
+  </ol>
+</Section>

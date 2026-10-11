@@ -1,0 +1,54 @@
+---
+/* Career rows. The first one starts open; click a row to expand it. */
+import Section from "../components/Section.astro";
+import Icon from "../components/Icon.astro";
+import OrgLogo from "../components/OrgLogo.astro";
+
+const jobs = [
+  {
+    role: "DevOps Engineer",
+    org: "ERS Energy Sdn Bhd · Part-time, remote",
+    company: "ERS Energy Sdn Bhd",
+    when: "2026 – Now",
+    points: [
+      "Installed fail2ban on company servers to block brute-force login attempts, and moved the team to individual server accounts so every action can be traced to a person.",
+      "Wrote the infrastructure plan for self-hosting Odoo Community Edition: Proxmox virtualisation, Docker, 3-2-1 backups, and monitoring with Prometheus, Grafana and Alertmanager.",
+      "Setting up AMD Cloud Manageability Service for out-of-band management of company machines.",
+    ],
+    tech: ["Linux", "fail2ban", "Proxmox", "Docker", "Prometheus", "Grafana", "Alertmanager"],
+  },
+  {
+    role: "Software Engineer Intern",
+    org: "ERS Energy Sdn Bhd",
+    company: "ERS Energy Sdn Bhd",
+    when: "May – Dec 2025",
+    points: [
+      "Set role-based access on internal AppSheet apps so each user only sees the sections their role needs.",
+      "Prepared an internal IT strategy on self-hosting Odoo and proposed a three-domain structure that separates public, product and internal company apps.",
+      "Presented a user satisfaction framework (NPS, CSAT, CES, SUS and UES) to the Digital Department, and mocked up an AI assistant module for a batch SCADA system.",
+    ],
+    tech: ["AppSheet", "Odoo", "IT strategy", "UX research"],
+  },
+];
+---
+<Section label="Career & experience" id="experience">
+  <ol class="rows">
+    {jobs.map((j, i) => (
+      <li>
+        <details class="row panel" open={i === 0}>
+          <summary>
+            <span class="row-num">{String(i + 1).padStart(2, "0")}</span>
+            <OrgLogo name={j.company} />
+            <span class="row-title"><h3>{j.role}</h3><p>{j.org}</p></span>
+            <span class="row-meta"><Icon name="calendar" size={14} /> {j.when}</span>
+            <span class="chev" aria-hidden="true"><Icon name="chevron" size={14} /></span>
+          </summary>
+          <div class="row-body">
+            <ul class="bullets">{j.points.map((p) => <li>{p}</li>)}</ul>
+            <div class="tech"><span>Tech:</span>{j.tech.map((t) => <span class="tag">{t}</span>)}</div>
+          </div>
+        </details>
+      </li>
+    ))}
+  </ol>
+</Section>

@@ -1,0 +1,28 @@
+---
+/* Leadership as tabs: one per organisation in src/data/leadership.js.
+   Without JavaScript every panel is shown. */
+import Section from "../components/Section.astro";
+import { leadership } from "../data/leadership.js";
+import { slugify } from "../lib/format.js";
+import OrgLogo from "../components/OrgLogo.astro";
+
+const list = leadership.map((l) => ({ ...l, key: slugify(l.org) }));
+---
+<Section label="Leadership & civic" id="leadership" note="Youth councils, student government and civic work.">
+  <div class="tab-list" role="tablist" aria-label="Organisations" data-tabs>
+    {list.map((l, i) => (
+      <button class="tab" type="button" role="tab" id={`tab-${l.key}`} aria-controls={`lead-${l.key}`} aria-selected={i === 0 ? "true" : "false"}><OrgLogo name={l.org} size="sm" />{l.org.replace(/ \(.*\)/, "")}</button>
+    ))}
+  </div>
+  {list.map((l) => (
+    <article class="lead-panel panel" role="tabpanel" id={`lead-${l.key}`} aria-labelledby={`tab-${l.key}`}>
+      <div class="lead-top">
+        <div class="lead-org"><OrgLogo name={l.org} /><h3>{l.org}</h3></div>
+        <span class="card-when">{l.period}</span>
+      </div>
+      <p class="lead-role">{l.role}{l.note && <span class="muted"> · {l.note}</span>}</p>
+      <blockquote>{l.summary}</blockquote>
+      {l.points.length > 0 && <ul class="bullets">{l.points.map((p) => <li>{p}</li>)}</ul>}
+    </article>
+  ))}
+</Section>
