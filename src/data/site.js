@@ -10,13 +10,16 @@ export const site = {
 };
 
 /* Main menu. Order here = order in the header.
-   To add a page: create src/pages/<name>.astro and add a line here. */
+   "./#id" links jump to a section of the one-page home; the id is set on each
+   section in src/sections/. A plain page link (like library.html) opens that page. */
 export const nav = [
-  { label: "Home", href: "./" },
-  { label: "Experience", href: "experience.html" },
-  { label: "Projects", href: "projects.html" },
+  { label: "About", href: "./#about" },
+  { label: "Exp", href: "./#experience" },
+  { label: "Skills", href: "./#skills" },
+  { label: "Projects", href: "./#projects" },
+  { label: "Leadership", href: "./#leadership" },
+  { label: "Contact", href: "./#contact" },
   { label: "Kutub Khanah", href: "library.html" },
-  { label: "Résumé", href: "resume.html" },
 ];
 
 /* The real email address is stored base64-encoded so scrapers that read
