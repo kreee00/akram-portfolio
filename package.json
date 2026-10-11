@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "covers": "node scripts/fetch-covers.mjs",
     "deploy": "astro build && wrangler deploy",
-    "cf:preview": "astro build && wrangler dev"
+    "cf:preview": "astro build && wrangler dev",
+    "logos": "node scripts/fetch-logos.mjs"
   },
   "dependencies": {
     "astro": "^7.3.8"
