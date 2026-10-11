@@ -1,0 +1,16 @@
+---
+import { fmtDate, isoDate } from "../lib/format.js";
+interface Props { items: any[] }
+const { items } = Astro.props;
+---
+<ol class="articles">
+  {items.map((a) => (
+    <li>
+      <time class="when" datetime={isoDate(a.date)}>{fmtDate(a.date)}</time>
+      <div>
+        <h3><a href={a.url} rel="noopener">{a.title}</a></h3>
+        {a.summary && <p class="muted">{a.summary}</p>}
+      </div>
+    </li>
+  ))}
+</ol>

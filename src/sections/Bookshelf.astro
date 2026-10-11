@@ -1,0 +1,20 @@
+---
+/* Library page: the whole shelf, grouped by status. */
+import Section from "../components/Section.astro";
+import Book from "../components/Book.astro";
+import { books } from "../data/books.js";
+
+const shelves = [
+  { status: "reading", label: "Currently reading" },
+  { status: "read", label: "Read" },
+];
+---
+{books.length === 0 && <p class="muted">The shelf is being catalogued. Check back soon.</p>}
+{shelves.map((s, i) => {
+  const list = books.filter((b) => b.status === s.status);
+  return list.length > 0 && (
+    <Section label={s.label} note={`${list.length} ${list.length === 1 ? "book" : "books"}`}>
+      <ul class="books shelf">{list.map((b) => <Book book={b} eager={i === 0} />)}</ul>
+    </Section>
+  );
+})}

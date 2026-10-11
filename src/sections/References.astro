@@ -1,0 +1,22 @@
+---
+/* Relationship types only, never names. Edit src/data/references.js */
+import Section from "../components/Section.astro";
+import { references as r } from "../data/references.js";
+---
+<Section label="References" id="references" note="Available on request.">
+  <div class="refs">
+    <p class="prose">{r.note}</p>
+    {r.available.length > 0 && (
+      <ul class="facts-list">
+        {r.available.map((a) => (
+          <li>
+            <span class="what">{a.relationship}</span>
+            <span class="label">On request</span>
+            {a.context && <span class="note">{a.context}</span>}
+          </li>
+        ))}
+      </ul>
+    )}
+    <p class="muted small">To request them, use the contact details at the bottom of this page and mention the role you are hiring for.</p>
+  </div>
+</Section>

@@ -1,0 +1,14 @@
+---
+/* Projects page: one section per category in src/data/projects.js */
+import Section from "../components/Section.astro";
+import ProjectItem from "../components/ProjectItem.astro";
+import { projects } from "../data/projects.js";
+const categories = [...new Set(projects.map((p) => p.category))];
+---
+{categories.map((c) => (
+  <Section label={c}>
+    <ul class="projects">
+      {projects.filter((p) => p.category === c).map((p) => <ProjectItem project={p} detailed />)}
+    </ul>
+  </Section>
+))}

@@ -1,0 +1,42 @@
+---
+import Section from "../components/Section.astro";
+
+/* Add a group by copying a block. learning: [...] shows in grey with "(learning)". */
+const groups = [
+  {
+    title: "Security operations",
+    blurb: "Blue-team analysis, OSINT and memory forensics, from CTFs and coursework.",
+    tools: ["Volatility3", "Wireshark", "Nmap", "Burp Suite", "Wazuh"],
+    learning: ["Autopsy", "FTK Imager"],
+  },
+  {
+    title: "Infrastructure & SRE",
+    blurb: "Linux servers, containers, monitoring and backup design.",
+    tools: ["Linux", "Docker", "Proxmox", "Prometheus", "Grafana", "Alertmanager", "fail2ban", "Cloudflare"],
+  },
+  {
+    title: "Software",
+    blurb: "Command-line tools, web apps and automation scripts.",
+    tools: ["Go", "Python", "Bash", "PostgreSQL", "Next.js", "React"],
+  },
+  {
+    title: "Governance & leadership",
+    blurb: "Policy drafting, budgeting and public speaking in English and Bahasa Malaysia.",
+    tools: ["IT strategy", "Access control", "Motion drafting", "Budget management", "Event delivery"],
+  },
+];
+---
+<Section label="Skills">
+  <div class="skills">
+    {groups.map((g) => (
+      <div class="skill-group">
+        <h3>{g.title}</h3>
+        <p>{g.blurb}</p>
+        <ul class="tools">
+          {g.tools.map((t) => <li>{t}</li>)}
+          {(g.learning || []).map((t) => <li class="learning">{t} (learning)</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Section>

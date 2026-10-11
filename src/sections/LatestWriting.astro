@@ -1,0 +1,14 @@
+---
+import Section from "../components/Section.astro";
+import ArticleList from "../components/ArticleList.astro";
+import { getArticles } from "../lib/articles.js";
+import { blog } from "../data/site.js";
+
+interface Props { limit?: number }
+const { limit = 3 } = Astro.props;
+const items = (await getArticles()).slice(0, limit);
+---
+<Section label="Latest writing" note={`From my blog, ${blog.name}.`}>
+  <ArticleList items={items} />
+  <a class="more" href={blog.archive} rel="noopener">All posts on {blog.name} &rarr;</a>
+</Section>

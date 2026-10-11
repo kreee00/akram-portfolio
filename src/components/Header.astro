@@ -1,0 +1,20 @@
+---
+import { nav } from "../data/site.js";
+
+/* "/experience.html", "/experience" and "experience.html" all match. */
+const norm = (p: string) => p.replace(/^\.?\/+/, "").replace(/(index)?(\.html)?\/?$/, "");
+const here = norm(Astro.url.pathname);
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="./">Akram <em>Faisal</em></a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={norm(item.href) === here ? "page" : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <button class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+    </nav>
+  </div>
+</header>

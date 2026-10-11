@@ -1,0 +1,22 @@
+---
+/* The standard section: a label rail on the left, content on the right.
+   <Section label="Skills" note="Optional line under the label"> ... </Section> */
+import { slugify } from "../lib/format.js";
+
+interface Props {
+  label: string;
+  note?: string;
+  id?: string;
+}
+const { label, note, id } = Astro.props;
+const headingId = (id || slugify(label)) + "-h";
+---
+<section class="section" id={id} aria-labelledby={headingId}>
+  <header>
+    <h2 id={headingId}>{label}</h2>
+    {note && <p class="muted small">{note}</p>}
+  </header>
+  <div class="section-body">
+    <slot />
+  </div>
+</section>

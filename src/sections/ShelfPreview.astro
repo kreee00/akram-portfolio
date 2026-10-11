@@ -1,0 +1,23 @@
+---
+/* Home page: a few books from the shelf. */
+import Section from "../components/Section.astro";
+import Book from "../components/Book.astro";
+import { books } from "../data/books.js";
+
+interface Props { limit?: number }
+const { limit = 4 } = Astro.props;
+const reading = books.filter((b) => b.status === "reading");
+const read = books.filter((b) => b.status === "read");
+const show = reading.concat(read).slice(0, limit);
+---
+<Section label="Khutub Khanah" note="My bookshelf. Reviews live on the blog.">
+  {books.length === 0 ? (
+    <p class="muted">The shelf is being catalogued. Check back soon.</p>
+  ) : (
+    <>
+      <p class="shelf-count"><span class="rank">{read.length}</span><span class="label">books read &middot; {reading.length} on the nightstand</span></p>
+      <ul class="books">{show.map((b) => <Book book={b} />)}</ul>
+    </>
+  )}
+  <a class="more" href="library.html">The whole shelf &rarr;</a>
+</Section>

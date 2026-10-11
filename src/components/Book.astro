@@ -1,0 +1,23 @@
+---
+import BookCover from "./BookCover.astro";
+
+interface Props {
+  book: any;
+  eager?: boolean;
+}
+const { book: b, eager } = Astro.props;
+const meta = [b.topic, b.language, b.status === "read" && b.year ? `Finished ${b.year}` : ""].filter(Boolean).join(" · ");
+---
+<li class:list={["book", { "is-example": b.example, "is-reading": b.status === "reading" }]}>
+  <BookCover book={b} eager={eager} />
+  <div class="book-body">
+    <h3>{b.title}</h3>
+    <p class="book-author">{b.author}</p>
+    <p class="book-meta">
+      {b.status === "reading" && <span class="reading-now">Reading now</span>}
+      {meta}
+      {b.example && <span class="tag">Example entry</span>}
+    </p>
+    {b.review && <p><a class="more" href={b.review} rel="noopener">Read my review &rarr;</a></p>}
+  </div>
+</li>

@@ -1,0 +1,26 @@
+---
+/* HOME PAGE
+   Each line below is one section, from top to bottom.
+   - Remove a section: delete (or comment out) its line.
+   - Reorder: move the lines.
+   - Add one: create src/sections/MySection.astro, import it, add <MySection />. */
+import Base from "../layouts/Base.astro";
+import Hero from "../sections/Hero.astro";
+import About from "../sections/About.astro";
+import WorkSummary from "../sections/WorkSummary.astro";
+import LeadershipHighlights from "../sections/LeadershipHighlights.astro";
+import Skills from "../sections/Skills.astro";
+import ProjectsFeatured from "../sections/ProjectsFeatured.astro";
+import LatestWriting from "../sections/LatestWriting.astro";
+import ShelfPreview from "../sections/ShelfPreview.astro";
+---
+<Base>
+  <Hero />
+  <About />
+  <WorkSummary />
+  <LeadershipHighlights />
+  <Skills />
+  <ProjectsFeatured />
+  <LatestWriting limit={3} />
+  <ShelfPreview limit={4} />
+</Base>

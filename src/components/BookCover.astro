@@ -1,0 +1,38 @@
+---
+/* A book cover that looks like a real hardback: spine hinge, page edges,
+   and a ribbon bookmark while you're reading it. Uses the uploaded image
+   if there is one, otherwise designs a cloth cover from the title. */
+import { Image } from "astro:assets";
+import { findCover, generatedCover } from "../lib/covers.js";
+
+interface Props {
+  book: any;
+  eager?: boolean;
+}
+const { book, eager = false } = Astro.props;
+const img = findCover(book);
+const gen = generatedCover(book);
+const loading = eager ? "eager" : "lazy";
+/* Like a real cover: "Title: Subtitle" puts the subtitle in small type,
+   and long titles get a smaller size so they fit the board. */
+const [main, ...rest] = String(book.title).split(/:\s*/);
+const sub = rest.join(": ");
+const size = main.length > 34 ? "t-xs" : main.length > 22 ? "t-sm" : "";
+---
+<div class="cover-wrap" aria-hidden="true">
+  <div class:list={["cover", img ? "has-img" : `gen v${gen.variant}`]} style={img ? undefined : `--cloth: ${gen.color}`}>
+    {img && typeof img === "string" && <img src={img} alt="" loading={loading} decoding="async" />}
+    {img && typeof img !== "string" && (
+      <Image src={img} alt="" width={420} widths={[220, 420]} sizes="(max-width: 640px) 45vw, 12rem" loading={loading} />
+    )}
+    {!img && (
+      <div class="cover-face">
+        <span class:list={["cover-title", size]}>{main}</span>
+        {sub && <span class="cover-sub">{sub}</span>}
+        <span class="cover-orn">&#10086;</span>
+        <span class="cover-author">{book.author}</span>
+      </div>
+    )}
+  </div>
+  {book.status === "reading" && <span class="ribbon"></span>}
+</div>

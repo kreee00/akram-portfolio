@@ -1,0 +1,12 @@
+---
+/* Home page: projects marked featured: true in src/data/projects.js */
+import Section from "../components/Section.astro";
+import ProjectItem from "../components/ProjectItem.astro";
+import { projects } from "../data/projects.js";
+---
+<Section label="Selected projects">
+  <ul class="projects">
+    {projects.filter((p) => p.featured).map((p) => <ProjectItem project={p} />)}
+  </ul>
+  <a class="more" href="projects.html">All projects &rarr;</a>
+</Section>

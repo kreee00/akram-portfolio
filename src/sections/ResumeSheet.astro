@@ -1,0 +1,116 @@
+---
+/* The one-page résumé. Prints cleanly to PDF with Ctrl+P. */
+import { contact } from "../data/site.js";
+---
+<article class="sheet" aria-label="Résumé of Mohamad Akram bin Mohd Faisal">
+  <header class="sheet-head">
+    <p class="sheet-name" role="heading" aria-level="2">Mohamad Akram bin Mohd Faisal</p>
+    <p>Cybersecurity &amp; DevOps &middot; Final-year Computer Science, UTP</p>
+    <p class="contacts">
+      <span>{contact.display}</span>
+      <span>akramfaisal.org</span>
+      <span>github.com/kreee00</span>
+      <span>linkedin.com/in/akram-mohdfaisal</span>
+      <span>Perak, Malaysia</span>
+    </p>
+  </header>
+
+  <section aria-labelledby="r-sum">
+    <h2 id="r-sum">Summary</h2>
+    <p>Final-year Computer Science student majoring in cybersecurity, with hands-on DevOps experience hardening and planning Linux infrastructure for an engineering company. Blue-team CTF competitor and Volatility3 instructor, with a strong interest in governance, risk and compliance. Available for graduate roles from December 2026.</p>
+  </section>
+
+  <section aria-labelledby="r-edu">
+    <h2 id="r-edu">Education</h2>
+    <div class="entry">
+      <div class="entry-top"><h3>Bachelor of Computer Science (Hons)</h3><span class="when">Expected Dec 2026</span></div>
+      <p class="org">Universiti Teknologi PETRONAS &middot; Cybersecurity major, corporate management minor</p>
+      <p>CGPA 3.65 &middot; Dean's List, January 2024 and September 2024</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-exp">
+    <h2 id="r-exp">Experience</h2>
+    <div class="entry">
+      <div class="entry-top"><h3>DevOps Engineer (Part-time)</h3><span class="when">2026 &ndash; Present</span></div>
+      <p class="org">ERS Energy Sdn Bhd &middot; Remote, Kuala Lumpur</p>
+      <ul>
+        <li>Installed fail2ban across company servers and introduced individual server accounts for traceability.</li>
+        <li>Designed a self-hosted Odoo architecture on Proxmox and Docker with 3-2-1 backups and Prometheus, Grafana and Alertmanager monitoring.</li>
+        <li>Setting up AMD Cloud Manageability Service for out-of-band device management.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Software Engineer Intern</h3><span class="when">May &ndash; Dec 2025</span></div>
+      <p class="org">ERS Energy Sdn Bhd</p>
+      <ul>
+        <li>Configured role-based access on internal AppSheet apps.</li>
+        <li>Wrote an IT strategy for self-hosting Odoo and proposed a three-domain structure for company apps.</li>
+        <li>Presented a user satisfaction measurement framework (NPS, CSAT, CES, SUS, UES) to the Digital Department.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-proj">
+    <h2 id="r-proj">Projects</h2>
+    <div class="entry">
+      <div class="entry-top"><h3>DockVault+</h3><span class="when">Final year project</span></div>
+      <p>Go CLI for Docker volume backups with ML-assisted security scanning; native on Windows and Linux.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Oral Odyssey</h3><span class="when">2026</span></div>
+      <p>Bilingual gamified dental health PWA built with a KKM dental team; Perak state innovation competition entry.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Youth cybersecurity workshop</h3><span class="when">Organiser</span></div>
+      <p>Cryptography and OSINT challenges for secondary school students on CTFd, Docker and a Linode VPS.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-skills">
+    <h2 id="r-skills">Skills</h2>
+    <dl class="sheet-skills">
+      <dt>Security</dt><dd>Volatility3, Wireshark, Nmap, Burp Suite, Wazuh, OSINT, memory forensics</dd>
+      <dt>Infrastructure</dt><dd>Linux, Docker, Proxmox, Prometheus, Grafana, Alertmanager, fail2ban, Cloudflare</dd>
+      <dt>Development</dt><dd>Go, Python, Bash, PostgreSQL, Next.js, React</dd>
+      <dt>Languages</dt><dd>English, Bahasa Malaysia</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="r-lead">
+    <h2 id="r-lead">Leadership</h2>
+    <div class="entry">
+      <div class="entry-top"><h3>Youth Representative (DB23), Dewan Belia Perak</h3><span class="when">2025 &ndash; 2026</span></div>
+      <p>Debated youth consumer literacy policy in the state youth assembly; drafted a motion for a youth quota on mosque committees.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Information Chief, Parti Generasi Progresif (PGP) Perak</h3><span class="when">Current</span></div>
+      <p>Led a reform initiative and supported the leadership transition of the state chapter.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Student Advisor, formerly President, CYBERHAX UTP</h3><span class="when">Current</span></div>
+      <p>As President, grew membership by more than 200% and ran over ten events.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>General Secretary, Student Representative Council UTP</h3><span class="when">Previously</span></div>
+      <p>Managed a RM30,000 council budget.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-top"><h3>Participant, Axiata ULDP</h3><span class="when">Cohort 15</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-cert">
+    <h2 id="r-cert">Certifications &amp; awards</h2>
+    <ul class="sheet-list">
+      <li>Memory Dump Analysis with Volatility3, Instructor (CYBERHAX UTP, 2025)</li>
+      <li>CompTIA Security+ (exam scheduled by Dec 2026) &middot; AWS Academy Cloud Foundations (in progress)</li>
+      <li>CTF: 4th CSLU@UPM Mini CTF &middot; 12th PwC Hack-A-Day &middot; 18th ASEAN Battle of Hackers 2023</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="r-ref">
+    <h2 id="r-ref">References</h2>
+    <p>Available on request. Contact details are shared once each referee has agreed.</p>
+  </section>
+</article>

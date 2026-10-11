@@ -1,0 +1,27 @@
+---
+import { contact, socials, site } from "../data/site.js";
+const year = new Date().getFullYear();
+---
+<footer class="site-footer wrap" aria-labelledby="contact-h">
+  <h2 class="contact-line" id="contact-h">{contact.headline}</h2>
+  <div class="contact-grid">
+    <div class="contact-main">
+      <p class="label">Email</p>
+      <div class="email-row" data-email-b64={contact.emailB64}>
+        <span class="email" id="email">{contact.display}</span>
+        <button class="copy-btn" type="button">Copy email</button>
+        <a class="mail-link" href="#contact-h">Write an email</a>
+      </div>
+      <p class="muted small">{contact.note}</p>
+    </div>
+    <ul class="socials" aria-label="Elsewhere">
+      {socials.map((s) => (
+        <li><a href={s.url} rel="noopener"><span>{s.label}</span><span>{s.handle}</span></a></li>
+      ))}
+    </ul>
+  </div>
+  <div class="colophon">
+    <span>&copy; {year} {site.fullName}</span>
+    <span>Hand-built with Astro. No trackers.</span>
+  </div>
+</footer>

@@ -1,0 +1,15 @@
+---
+import Section from "../components/Section.astro";
+
+const results = [
+  { place: 4, event: "CSLU@UPM Mini CTF" },
+  { place: 12, event: "PwC Hack-A-Day" },
+  { place: 18, event: "ASEAN Battle of Hackers 2023" },
+];
+const suffix = (n: number) => (n % 100 >= 11 && n % 100 <= 13) ? "th" : ({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] || "th";
+---
+<Section label="CTF results" note="Blue team: OSINT and memory forensics.">
+  <ul class="results">
+    {results.map((r) => <li><span class="rank">{r.place}<sup>{suffix(r.place)}</sup></span><span>{r.event}</span></li>)}
+  </ul>
+</Section>
