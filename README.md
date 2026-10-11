@@ -10,7 +10,28 @@ npm run dev        # live preview at http://localhost:4321
 npm run build      # outputs the finished site to dist/
 ```
 
-**Cloudflare Pages:** framework preset *Astro*, build command `npm run build`, output directory `dist`.
+## Deploy (Cloudflare, straight from GitHub)
+
+`wrangler.jsonc` tells Cloudflare to serve the `dist/` folder, so the same setup works from the dashboard and from `npx wrangler`.
+
+**Automatic deploys on every push:** in the Cloudflare dashboard go to *Workers & Pages → Create → Import a repository*, pick `kreee00/akram-portfolio`, and use:
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+
+Then add `akramfaisal.org` under the project's *Settings → Domains & Routes*.
+
+**From your computer:**
+
+```sh
+npx wrangler login        # once
+npm run deploy            # builds, then runs wrangler deploy
+npm run cf:preview        # builds and previews exactly as Cloudflare will serve it
+```
+
+Old links such as `/library.html` redirect to `/library`, and unknown URLs show the 404 page.
 
 ## How it's organised
 

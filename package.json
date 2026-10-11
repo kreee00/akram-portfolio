@@ -7,9 +7,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "covers": "node scripts/fetch-covers.mjs"
+    "covers": "node scripts/fetch-covers.mjs",
+    "deploy": "astro build && wrangler deploy",
+    "cf:preview": "astro build && wrangler dev"
   },
   "dependencies": {
     "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
   }
 }
