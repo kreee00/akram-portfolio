@@ -33,6 +33,7 @@ export const books = [
     year: "",
     topic: "Memoir",
     language: "EN",
+    isbn: "978-93-94984-03-5",
     review: "",
   },
   {
@@ -42,6 +43,7 @@ export const books = [
     year: "",
     topic: "Islamic thought",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
@@ -51,6 +53,7 @@ export const books = [
     year: "",
     topic: "Politics",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
@@ -60,6 +63,7 @@ export const books = [
     year: "",
     topic: "Fiction",
     language: "EN",
+    isbn: "",
     review: "",
   },
   {
@@ -69,15 +73,17 @@ export const books = [
     year: "",
     topic: "Sociology",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
-    title: "Suara-suara orang melawan",
+    title: "Suara-Suara Orang Melawan",
     author: "Ilham Mazalan",
     status: "to-read",
     year: "",
     topic: "Politics",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
@@ -87,6 +93,7 @@ export const books = [
     year: "",
     topic: "Politics",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
@@ -96,6 +103,7 @@ export const books = [
     year: "",
     topic: "Politics",
     language: "BM",
+    isbn: "",
     review: "",
   },
   {
@@ -105,6 +113,7 @@ export const books = [
     year: "",
     topic: "Education",
     language: "BM",
+    isbn: "978-967-488-224-2",
     review: "",
   },
 ];
