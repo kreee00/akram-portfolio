@@ -1,7 +1,7 @@
 /*
   KHUTUB KHANAH (BOOKSHELF)
 
-  status   -> "reading" or "read"
+  status   -> "reading", "read" or "to-read"
   year     -> year you finished it ("" if still reading)
   review   -> link to your review on the blog, or ""
   language -> "EN", "BM", "AR" ...
@@ -50,6 +50,60 @@ export const books = [
     status: "read",
     year: "",
     topic: "Politics",
+    language: "BM",
+    review: "",
+  },
+  {
+    title: "Days at the Morisaki Bookshop",
+    author: "Satoshi Yagisawa",
+    status: "read",
+    year: "",
+    topic: "Fiction",
+    language: "EN",
+    review: "",
+  },
+  {
+    title: "Sosiologi Rasuah",
+    author: "Syed Hussein Alatas",
+    status: "to-read",
+    year: "",
+    topic: "Sociology",
+    language: "BM",
+    review: "",
+  },
+  {
+    title: "Suara-suara orang melawan",
+    author: "Ilham Mazalan",
+    status: "to-read",
+    year: "",
+    topic: "Politics",
+    language: "BM",
+    review: "",
+  },
+  {
+    title: "Isothymia Politik Cina",
+    author: "Firdaus Zainal",
+    status: "to-read",
+    year: "",
+    topic: "Politics",
+    language: "BM",
+    review: "",
+  },
+  {
+    title: "Kejatuhan Kuasa Politik Melayu",
+    author: "Firdaus Zainal",
+    status: "to-read",
+    year: "",
+    topic: "Politics",
+    language: "BM",
+    review: "",
+  },
+  {
+    title: "Pendidikan Cina Malaysia Kontemporari: Cabaran dan Peluang",
+    author: "Thock Ker Pong & Tar Lay Keng",
+    status: "to-read",
+    year: "",
+    topic: "Education",
     language: "BM",
     review: "",
   },
