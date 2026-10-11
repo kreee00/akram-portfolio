@@ -30,7 +30,7 @@ export const projects = [
     featured: true,
     summary: "A bilingual, retro arcade-style web app that teaches dental health through games, built with a Ministry of Health (KKM) dental team.",
     details: [
-      ["Format", "Installable progressive web app in Bahasa Malaysia and English."],
+      ["Format", "Installable progressive web app in Bahasa Melayu and English."],
       ["Outcome", "Entered in a Perak state innovation competition, October 2026."],
     ],
     facts: [["Role", "Platform developer"], ["Type", "PWA"]],

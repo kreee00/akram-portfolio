@@ -28,13 +28,13 @@ export const contact = {
   display: "akram.mfaisal81 [at] gmail.com",
   emailB64: "YWtyYW0ubWZhaXNhbDgxQGdtYWlsLmNvbQ==",
   headline: "Hiring for security, GRC or DevOps? Let’s talk.",
-  note: "Based in Perak, working remotely with teams in Kuala Lumpur. Fluent in English and Bahasa Malaysia.",
+  note: "Based in Perak, working remotely with teams in Kuala Lumpur. Fluent in English and Bahasa Melayu.",
 };
 
 export const socials = [
   { label: "GitHub", handle: "kreee00", url: "https://github.com/kreee00" },
   { label: "LinkedIn", handle: "akram-mohdfaisal", url: "https://www.linkedin.com/in/akram-mohdfaisal" },
-  { label: "Almanac (blog)", handle: "pages.dev", url: "https://blog.akramfaisal.org" },
+  { label: "Almanac (blog)", handle: "blog.akramfaisal.org", url: "https://blog.akramfaisal.org" },
   { label: "Website", handle: "akramfaisal.org", url: "https://akramfaisal.org" },
 ];
 
